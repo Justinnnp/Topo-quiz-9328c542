@@ -3,7 +3,7 @@
 $array = [
     "Japan" => "Tokyo",
     "Mexico" => "Mexico City",
-    "USA" => "Wasington D.C",
+    "USA" => "Washington D.C.",
     "India" => "New Delhi",
     "Zuid-Korea" => "Seoul",
     "China" => "Peking",
@@ -12,18 +12,24 @@ $array = [
     "Egypt" => "Cairo",
     "UK" => "London",
 ];
-
+$correct = 0;
 foreach ($array as $arrayss => $val) {
-
-    $vraag = readLine("Welke hoofdstad heeft '$arrayss' ");
-
-    if ($val == $arrayss) {
+    if ($correct === true) {
+        $correct++;
+    }
+    
+    $goed = false;
+    $vraag = readLine("Welke hoofdstad heeft '$arrayss' " .PHP_EOL);
+    if ($vraag == $val) {
         echo "Correct ! " .PHP_EOL;
-    }elseif ($vraag == $val) {
-        echo "Correct" .PHP_EOL;
-    }else {
-        echo "Helaas, " .$vraag ." is niet de hoofdstad van Mexico." .PHP_EOL;
-        echo "Het correcte antwoord is: " .$val . ".";
-        exit;
+        $goed = true;
+        $correct++;
+    } else {
+        echo "Het correcte antwoord is: {$val}" .PHP_EOL;
+        echo "Helaas, {$vraag} is niet de hoofdstad van {$arrayss}." .PHP_EOL;
     }
 }
+echo "Je hebt {$correct} van de " . count($array) . " goed geraden.";
+?>
+
+
